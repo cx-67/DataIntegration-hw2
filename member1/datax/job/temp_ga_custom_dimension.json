@@ -1,0 +1,52 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT uid, visit_id, `index`, value FROM ga_custom_dimension WHERE uid IN (SELECT uid FROM ga_session WHERE date BETWEEN '201702' AND '201705')"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "datax",
+                        "password": "DxPwd123!",
+                        "column": [
+                            "uid",
+                            "visit_id",
+                            "dim_index",
+                            "value"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://BPeril:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_custom_dimension"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}
