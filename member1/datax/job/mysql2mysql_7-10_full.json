@@ -1,0 +1,300 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT * FROM ga_session WHERE date BETWEEN '201707' AND '201710'"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "preSql": [
+                            "DELETE FROM ga_session"
+                        ],
+                        "column": [
+                            "*"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_session"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT uid, `index` as dim_index, value FROM ga_custom_dimension WHERE uid IN (SELECT uid FROM ga_session WHERE date BETWEEN '201707' AND '201710')"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "preSql": [
+                            "DELETE FROM ga_custom_dimension"
+                        ],
+                        "column": [
+                            "uid",
+                            "dim_index",
+                            "value"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_custom_dimension"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT * FROM ga_hit WHERE uid IN (SELECT uid FROM ga_session WHERE date BETWEEN '201707' AND '201710')"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "preSql": [
+                            "DELETE FROM ga_hit"
+                        ],
+                        "column": [
+                            "*"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_hit"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT * FROM ga_total WHERE uid IN (SELECT uid FROM ga_session WHERE date BETWEEN '201707' AND '201710')"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "preSql": [
+                            "DELETE FROM ga_total"
+                        ],
+                        "column": [
+                            "*"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_total"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT * FROM ga_geo_network WHERE uid IN (SELECT uid FROM ga_session WHERE date BETWEEN '201707' AND '201710')"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "preSql": [
+                            "DELETE FROM ga_geo_network"
+                        ],
+                        "column": [
+                            "*"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_geo_network"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT * FROM ga_traffic_source WHERE uid IN (SELECT uid FROM ga_session WHERE date BETWEEN '201707' AND '201710')"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "preSql": [
+                            "DELETE FROM ga_traffic_source"
+                        ],
+                        "column": [
+                            "*"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_traffic_source"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "student",
+                        "password": "P@nju2025",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "SELECT * FROM ga_device WHERE uid IN (SELECT uid FROM ga_session WHERE date BETWEEN '201707' AND '201710')"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://172.29.7.85:3306/google_analytics?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "writeMode": "insert",
+                        "username": "root",
+                        "password": "123456",
+                        "preSql": [
+                            "DELETE FROM ga_device"
+                        ],
+                        "column": [
+                            "*"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:mysql://127.0.0.1:3306/DIDatax?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                                "table": [
+                                    "ga_device"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "speed": {
+                "channel": "1"
+            }
+        }
+    }
+}

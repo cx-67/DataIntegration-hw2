@@ -3,7 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Database connection string
-db_connection_str = 'mysql+pymysql://datax:DxPwd123!@BPeril:3306/DIDatax'
+db_connection_str = 'mysql+pymysql://root:123456@127.0.0.1:3306/DIDatax'
 db_connection = create_engine(db_connection_str)
 
 tables = [
