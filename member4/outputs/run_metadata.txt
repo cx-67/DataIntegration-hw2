@@ -1,0 +1,6 @@
+User/device analysis run metadata
+Data dir: C:\Desktop\skill\更正as2全量同步数据\cleaned
+Rows (sessions): 71812
+Date range: 2017-07-01 00:00:00 ~ 2017-07-31 00:00:00
+New sessions: 54681
+Returning sessions: 17131
